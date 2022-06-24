@@ -17,6 +17,6 @@ namespace QuickBuy.Dominio.Entidades
                 AdicionarCritica("Não foi identificado qual a refencia ao produto");
             if (Quantidade == 0)
                 AdicionarCritica("Quantidade não foi informado");
-        
+        }
     }
 }
