@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-  <ProjectReference Include="QuickBuy.Dominio/QuickBuy.Dominio.csproj" />
+  <ProjectReference Include="..\QuickBuy.Dominio\QuickBuy.Dominio.csproj" />
 </ItemGroup>
 
 
