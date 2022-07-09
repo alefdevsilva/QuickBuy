@@ -14,6 +14,13 @@ namespace QuickBuy.Web.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
 
+        [HttpGet]
+        public ActionResult Get()
+        {
+
+            return Ok(_usuarioRepositorio.ObterTodos());
+        }
+
         [HttpPost("VerificarUsuario")]
         public ActionResult VerificarUsuario([FromBody]Usuario usuario)
         {
@@ -28,6 +35,25 @@ namespace QuickBuy.Web.Controllers
             catch(Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Post([FromBody] Usuario usuario)
+        {
+            try
+            {
+                var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
+
+                if(usuarioCadastrado != null)
+                    return BadRequest("Email já cadastrado!");
+                
+                _usuarioRepositorio.Adicionar(usuario);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
             }
         }
 
